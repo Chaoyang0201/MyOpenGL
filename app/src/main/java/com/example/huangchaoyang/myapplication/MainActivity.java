@@ -8,6 +8,10 @@ import android.view.WindowManager;
 
 import com.google.gson.Gson;
 
+/**
+ * @author huangchaoyang
+ *
+ */
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

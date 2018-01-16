@@ -3,14 +3,21 @@ package com.example.huangchaoyang.myapplication;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
+import com.example.huangchaoyang.myapplication.Polygon.Square;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Created by huangchaoyang on 18-1-12.
+ * @author huangchaoyang
+ * OpenGLRenderer
  */
 
 class OpenGLRenderer implements GLSurfaceView.Renderer {
+
+    Square square = new Square();
+
 
     /**
      * Called when the surface is created or recreated.
@@ -22,7 +29,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
             // Set the background color to black ( rgba ).
-        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f);  
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
         // Enable Smooth Shading, default not really needed.
         //mode   指明使用哪种着色技术，可以取值GL_FLAT和GL_SMOOTH。默认取值是GL_SMOOTH。
         gl.glShadeModel(GL10.GL_SMOOTH);
@@ -141,7 +148,22 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         // Clears the screen and depth buffer.
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT | 
+        gl.glClear(GL10.GL_COLOR_BUFFER_BIT |
                 GL10.GL_DEPTH_BUFFER_BIT);
+
+
+        //重置坐标系
+        gl.glLoadIdentity();
+        /*
+        * 沿着 X, Y 和 Z 轴移动。
+        * 注意在glTranslatef(x, y, z)中,移动的时候，并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。
+        * 其作用就是将你绘点坐标的原点在当前原点的基础上平移一个(x,y,z)向量。
+        * */
+        gl.glTranslatef(0,0,-100);
+
+        square.draw(gl);
+
+
+
     }
 }

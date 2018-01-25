@@ -139,6 +139,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();
 
     }
+    private float angle = 0f;
 
     /**
      * Called to draw the current frame.
@@ -159,11 +160,38 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         * 注意在glTranslatef(x, y, z)中,移动的时候，并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。
         * 其作用就是将你绘点坐标的原点在当前原点的基础上平移一个(x,y,z)向量。
         * */
-        gl.glTranslatef(0,0,-100);
+        gl.glTranslatef(0,0,-10);
 
+        //square A
+        gl.glPushMatrix();
+        gl.glRotatef(angle,0,0,1);
+        square.draw(gl);
+        gl.glPopMatrix();
+        //square B
+        gl.glPushMatrix();
+        gl.glRotatef(angle,0,0,-1);
+        gl.glTranslatef(2,0,0);
+        gl.glScalef(0.5f,0.5f,0.5f);
         square.draw(gl);
 
+        //save B
+        //draw C
+        gl.glPushMatrix();
+        gl.glRotatef(angle,0,0,-1);
+        gl.glTranslatef(2,0,0);
+        gl.glScalef(.5f,.5f,.5f);
+        gl.glRotatef(angle*10,0,0,1);
+        square.draw(gl);
+
+        //pop B
+        gl.glPopMatrix();
+        //pop A
+        gl.glPopMatrix();
 
 
+
+
+
+        angle++;
     }
 }

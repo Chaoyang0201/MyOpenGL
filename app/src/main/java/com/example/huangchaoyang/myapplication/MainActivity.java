@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 //        setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActionBar().hide();
         GLSurfaceView view = new GLSurfaceView(this);
         view.setRenderer(new OpenGLRenderer());
         setContentView(view);

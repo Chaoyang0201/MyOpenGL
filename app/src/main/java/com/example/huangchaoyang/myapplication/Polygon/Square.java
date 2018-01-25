@@ -18,7 +18,7 @@ public class Square {
     /**
      * 顶点
      */
-    private float[] vertices = {
+    protected float[] vertices = {
             -1.0f,1.0f,0.0f,
             -1.0f,-1.0f,0.0f,
             1.0f,-1.0f,0.0f,
@@ -26,15 +26,15 @@ public class Square {
     };
 
     /**顶点连接顺序 三个一组*/
-    private short[] indices = {
+    protected short[] indices = {
             0, 1, 2,
             0, 2, 3
     };
 
     /**顶点的缓冲区*/
-    private FloatBuffer vertexBuffer;
+    protected FloatBuffer vertexBuffer;
     /**索引缓冲区*/
-    private ShortBuffer indexBuffer;
+    protected ShortBuffer indexBuffer;
 
     public Square(){
         /*

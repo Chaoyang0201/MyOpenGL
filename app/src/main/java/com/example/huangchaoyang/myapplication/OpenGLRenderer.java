@@ -3,6 +3,8 @@ package com.example.huangchaoyang.myapplication;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
+import com.example.huangchaoyang.myapplication.Polygon.FlatColoredSquare;
+import com.example.huangchaoyang.myapplication.Polygon.SmoothColoredSquare;
 import com.example.huangchaoyang.myapplication.Polygon.Square;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -16,7 +18,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 class OpenGLRenderer implements GLSurfaceView.Renderer {
 
-    Square square = new Square();
+    Square square = new SmoothColoredSquare();
 
 
     /**
@@ -160,6 +162,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         * 注意在glTranslatef(x, y, z)中,移动的时候，并不是相对屏幕中心移动，而是相对与当前所在的屏幕位置。
         * 其作用就是将你绘点坐标的原点在当前原点的基础上平移一个(x,y,z)向量。
         * */
+
         gl.glTranslatef(0,0,-10);
 
         //square A

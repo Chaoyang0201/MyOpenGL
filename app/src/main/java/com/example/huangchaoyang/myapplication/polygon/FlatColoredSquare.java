@@ -1,8 +1,4 @@
-package com.example.huangchaoyang.myapplication.Polygon;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+package com.example.huangchaoyang.myapplication.polygon;
 
 import javax.microedition.khronos.opengles.GL10;
 

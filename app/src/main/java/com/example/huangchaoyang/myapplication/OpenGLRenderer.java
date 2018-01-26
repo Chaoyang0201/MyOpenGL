@@ -3,9 +3,11 @@ package com.example.huangchaoyang.myapplication;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
-import com.example.huangchaoyang.myapplication.Polygon.FlatColoredSquare;
-import com.example.huangchaoyang.myapplication.Polygon.SmoothColoredSquare;
-import com.example.huangchaoyang.myapplication.Polygon.Square;
+import com.example.huangchaoyang.myapplication.polygon.FlatColoredSquare;
+import com.example.huangchaoyang.myapplication.polygon.Mesh;
+import com.example.huangchaoyang.myapplication.polygon.Plane;
+import com.example.huangchaoyang.myapplication.polygon.SmoothColoredSquare;
+import com.example.huangchaoyang.myapplication.polygon.Square;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -19,6 +21,7 @@ import javax.microedition.khronos.opengles.GL10;
 class OpenGLRenderer implements GLSurfaceView.Renderer {
 
     Square square = new SmoothColoredSquare();
+    private Mesh plane = new Plane(2,2,20,20);
 
 
     /**
@@ -165,33 +168,9 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
 
         gl.glTranslatef(0,0,-10);
 
-        //square A
-        gl.glPushMatrix();
-        gl.glRotatef(angle,0,0,1);
-        square.draw(gl);
-        gl.glPopMatrix();
-        //square B
-        gl.glPushMatrix();
-        gl.glRotatef(angle,0,0,-1);
-        gl.glTranslatef(2,0,0);
-        gl.glScalef(0.5f,0.5f,0.5f);
-        square.draw(gl);
-
-        //save B
-        //draw C
-        gl.glPushMatrix();
-        gl.glRotatef(angle,0,0,-1);
-        gl.glTranslatef(2,0,0);
-        gl.glScalef(.5f,.5f,.5f);
-        gl.glRotatef(angle*10,0,0,1);
-        square.draw(gl);
-
-        //pop B
-        gl.glPopMatrix();
-        //pop A
-        gl.glPopMatrix();
 
 
+        plane.draw(gl);
 
 
 

@@ -54,11 +54,11 @@ public class Plane extends Mesh {
                 }
             }
         }
-        setColor(0.5f,1,1,1);
+        setColor(1f,1,1,1);
         setColors(new float[]{
                 1f, 0f, 0f, 1f, //v1
-                0f, 1f, 0f, 1f, //v2
-                0f, 0f, 1f, 1f, //v3
+                0f, 0f, 1f, 1f, //v2
+                0f, 1f, 0f, 1f, //v3
                 1f, 0f, 1f, 1f, //v4
         });
         setIndices(indices);

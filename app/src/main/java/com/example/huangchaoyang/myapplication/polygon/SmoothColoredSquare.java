@@ -36,11 +36,7 @@ public class SmoothColoredSquare extends FlatColoredSquare {
 
         gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
         gl.glColorPointer(4,GL10.GL_FLOAT,0,colorBuffer);
-
-
-        gl.glColor4f(.5f,.5f,1f,1f);
         super.draw(gl);
-
         gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
     }
 }

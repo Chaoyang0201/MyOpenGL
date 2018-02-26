@@ -1,13 +1,24 @@
 package com.example.huangchaoyang.myapplication;
 
+import android.app.Application;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
+import android.opengl.GLUtils;
+import android.view.View;
 
-import com.example.huangchaoyang.myapplication.polygon.FlatColoredSquare;
+import com.example.huangchaoyang.myapplication.polygon.Cube;
+import com.example.huangchaoyang.myapplication.polygon.Group;
 import com.example.huangchaoyang.myapplication.polygon.Mesh;
-import com.example.huangchaoyang.myapplication.polygon.Plane;
+import com.example.huangchaoyang.myapplication.polygon.SimplePanel;
 import com.example.huangchaoyang.myapplication.polygon.SmoothColoredSquare;
 import com.example.huangchaoyang.myapplication.polygon.Square;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.util.ArrayList;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -19,11 +30,15 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 class OpenGLRenderer implements GLSurfaceView.Renderer {
-
+    private final Group root;
     Square square = new SmoothColoredSquare();
-    private Mesh plane = new Plane(2,2,20,20);
+    Mesh mesh = new Cube(2,2,2);
+    private FloatBuffer textureBuffer;
+    private SimplePanel panel = new SimplePanel(200,200);
 
-
+    public OpenGLRenderer(){
+        root = new Group();
+    }
     /**
      * Called when the surface is created or recreated.
      * @param gl the GL interface. Use <code>instanceof</code> to
@@ -146,6 +161,8 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
     }
     private float angle = 0f;
 
+    int[] textures = new int[1];
+
     /**
      * Called to draw the current frame.
      * @param gl the GL interface. Use <code>instanceof</code> to
@@ -167,13 +184,15 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         * */
 
         gl.glTranslatef(0,0,-10);
+        root.draw(gl);
 
-
-
-        plane.draw(gl);
-
-
-
-        angle++;
+    /**
+     * Adds a mesh to the root.
+     *
+     * @param mesh
+     *            the mesh to add.
+     */
+    public void addMesh(Mesh mesh) {
+        root.add(mesh);
     }
 }
